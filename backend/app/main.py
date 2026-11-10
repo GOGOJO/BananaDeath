@@ -28,7 +28,7 @@ def create_app(settings: Settings | None = None, load_model: bool = True) -> Fas
             app.state.predictor = load_predictor(settings.model_path)
         yield
 
-    app = FastAPI(title="BananaLife API", version="1.0.0", lifespan=lifespan)
+    app = FastAPI(title="Banana Death API", version="1.0.0", lifespan=lifespan)
     app.state.predictor = None
     app.add_middleware(
         CORSMiddleware,

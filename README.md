@@ -1,8 +1,8 @@
-# BananaLife 🍌
+# Banana Death 🍌
 
 Upload a photo of a banana and a ResNet18 regression model estimates where it sits on an 8-step scale from fresh to overripe.
 
-**Live app:** [gogojo.github.io/BananaLife](https://gogojo.github.io/BananaLife/). The model runs in your browser with ONNX Runtime Web, so photos never leave your device.
+**Live app:** [gogojo.github.io/BananaDeath](https://gogojo.github.io/BananaDeath/). The model runs in your browser with ONNX Runtime Web, so photos never leave your device.
 
 ## Results
 
@@ -50,11 +50,11 @@ python3 -m venv .venv
 Rebuild the model. You need the Kaggle extract in `ml/data/raw/`, or set `BANANA_DATA_DIR`.
 
 ```bash
-.venv/bin/python -m bananalife_ml.manifest      # clean, group, and split -> ml/data/processed/manifest.csv
-.venv/bin/python -m bananalife_ml.baseline      # mean and color-histogram baselines
-.venv/bin/python -m bananalife_ml.train         # -> ml/checkpoints/best.pt
-.venv/bin/python -m bananalife_ml.evaluate      # -> ml/reports/
-.venv/bin/python -m bananalife_ml.export_onnx   # -> frontend/public/model/, checked against PyTorch
+.venv/bin/python -m bananadeath_ml.manifest      # clean, group, and split -> ml/data/processed/manifest.csv
+.venv/bin/python -m bananadeath_ml.baseline      # mean and color-histogram baselines
+.venv/bin/python -m bananadeath_ml.train         # -> ml/checkpoints/best.pt
+.venv/bin/python -m bananadeath_ml.evaluate      # -> ml/reports/
+.venv/bin/python -m bananadeath_ml.export_onnx   # -> frontend/public/model/, checked against PyTorch
 ```
 
 Run the web app with the model in the browser:

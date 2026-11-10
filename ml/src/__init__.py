@@ -1,1 +1,1 @@
-"""BananaLife machine learning package: data audit, training, evaluation, and inference."""
+"""Banana Death machine learning package: data audit, training, evaluation, and inference."""

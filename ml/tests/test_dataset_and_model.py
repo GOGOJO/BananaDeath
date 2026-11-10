@@ -2,9 +2,9 @@ import numpy as np
 import torch
 from PIL import Image
 
-from bananalife_ml.dataset import IMAGE_SIZE, PadToSquare, eval_transform, train_transform
-from bananalife_ml.metrics import regression_metrics
-from bananalife_ml.model import BananaRegressor
+from bananadeath_ml.dataset import IMAGE_SIZE, PadToSquare, eval_transform, train_transform
+from bananadeath_ml.metrics import regression_metrics
+from bananadeath_ml.model import BananaRegressor
 
 
 def test_pad_to_square_keeps_the_whole_image() -> None:

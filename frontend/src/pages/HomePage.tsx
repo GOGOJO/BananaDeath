@@ -14,9 +14,9 @@ export default function HomePage() {
       <header className="border-b border-stone-200 bg-white">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
           <h1 className="text-xl font-bold text-stone-900">
-            <span aria-hidden>🍌 </span>BananaLife
+            <span aria-hidden>🍌 </span>Banana Death
           </h1>
-          <a href="https://github.com/GOGOJO/BananaLife" className="text-sm text-stone-500 hover:text-stone-800">
+          <a href="https://github.com/GOGOJO/BananaDeath" className="text-sm text-stone-500 hover:text-stone-800">
             Source on GitHub
           </a>
         </div>

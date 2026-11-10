@@ -42,7 +42,7 @@ export class BrowserPredictor implements Predictor {
       const metaResponse = await fetch(`${MODEL_DIR}metadata.json`);
       if (!metaResponse.ok) throw new Error("Could not load the model description.");
       const meta = (await metaResponse.json()) as ModelMetadata;
-      const bytes = await downloadWithProgress(`${MODEL_DIR}bananalife.onnx`, onProgress);
+      const bytes = await downloadWithProgress(`${MODEL_DIR}bananadeath.onnx`, onProgress);
       const session = await ort.InferenceSession.create(bytes, { executionProviders: ["wasm"] });
       return { session, meta };
     })();

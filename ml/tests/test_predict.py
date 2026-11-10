@@ -5,9 +5,9 @@ import pytest
 import torch
 from PIL import Image
 
-from bananalife_ml.dataset import IMAGE_SIZE
-from bananalife_ml.model import BananaRegressor
-from bananalife_ml.predict import Predictor
+from bananadeath_ml.dataset import IMAGE_SIZE
+from bananadeath_ml.model import BananaRegressor
+from bananadeath_ml.predict import Predictor
 
 
 def write_checkpoint(path: Path, bias: float) -> None:

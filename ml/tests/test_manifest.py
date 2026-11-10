@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from bananalife_ml.manifest import (
+from bananadeath_ml.manifest import (
     ImageRecord,
     ManifestRow,
     assign_splits,

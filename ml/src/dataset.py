@@ -1,4 +1,4 @@
-"""PyTorch dataset, image transforms, and data loaders for BananaLife."""
+"""PyTorch dataset, image transforms, and data loaders for Banana Death."""
 
 from __future__ import annotations
 

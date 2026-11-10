@@ -33,7 +33,7 @@ def load_predictor(model_path: Path) -> ImagePredictor | None:
     if not model_path.is_file():
         logger.warning("model checkpoint not found at %s; /predictions will return 503", model_path)
         return None
-    from bananalife_ml.predict import Predictor
+    from bananadeath_ml.predict import Predictor
 
     predictor = Predictor(model_path)
     logger.info("loaded model %s from %s", predictor.model_version, model_path)

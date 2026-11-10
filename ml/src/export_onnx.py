@@ -79,7 +79,7 @@ def main() -> None:
     """Export, verify, and write the metadata file the web app reads."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--checkpoint", default=str(ML_ROOT / "checkpoints" / "best.pt"))
-    parser.add_argument("--out", default=str(REPO_ROOT / "frontend" / "public" / "model" / "bananalife.onnx"))
+    parser.add_argument("--out", default=str(REPO_ROOT / "frontend" / "public" / "model" / "bananadeath.onnx"))
     parser.add_argument("--data-dir", default=None)
     parser.add_argument("--manifest", default=str(ML_ROOT / "data" / "processed" / "manifest.csv"))
     args = parser.parse_args()
