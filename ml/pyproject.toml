@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bananalife-ml"
+version = "0.1.0"
+description = "Data audit, training, evaluation, and inference for BananaLife."
+requires-python = ">=3.11"
+
+[tool.setuptools]
+package-dir = { "bananalife_ml" = "src" }
+packages = ["bananalife_ml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

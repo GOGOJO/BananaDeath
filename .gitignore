@@ -1,0 +1,24 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+*.egg-info/
+
+# Raw downloads and derived data stay out of git.
+# Re-download from Kaggle rather than committing images.
+ml/data/raw/*
+ml/data/processed/*
+!ml/data/raw/.gitkeep
+!ml/data/processed/.gitkeep
+
+# Training artifacts. The browser copy of the model lives in frontend/public/model/.
+ml/checkpoints/
+
+# Shows dataset photos, some of them watermarked stock images; regenerate locally with evaluate.py.
+ml/reports/figures/worst_test_errors.png
+
+node_modules/
+frontend/dist/
