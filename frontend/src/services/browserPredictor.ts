@@ -35,21 +35,34 @@ async function downloadWithProgress(url: string, onProgress?: ProgressCallback):
 export class BrowserPredictor implements Predictor {
   readonly source = "browser" as const;
   private loading: Promise<{ session: InferenceSession; meta: ModelMetadata }> | null = null;
+  private listeners = new Set<ProgressCallback>();
 
   private load(onProgress?: ProgressCallback) {
+    if (onProgress) this.listeners.add(onProgress);
     this.loading ??= (async () => {
       const ort = await import("onnxruntime-web/wasm");
       const metaResponse = await fetch(`${MODEL_DIR}metadata.json`);
       if (!metaResponse.ok) throw new Error("Could not load the model description.");
       const meta = (await metaResponse.json()) as ModelMetadata;
-      const bytes = await downloadWithProgress(`${MODEL_DIR}bananadeath.onnx`, onProgress);
+      const bytes = await downloadWithProgress(`${MODEL_DIR}bananadeath.onnx`, (loaded, total) => {
+        for (const listener of this.listeners) listener(loaded, total);
+      });
       const session = await ort.InferenceSession.create(bytes, { executionProviders: ["wasm"] });
       return { session, meta };
     })();
-    this.loading.catch(() => {
-      this.loading = null;
+    const loading = this.loading;
+    const settle = () => {
+      if (onProgress) this.listeners.delete(onProgress);
+    };
+    loading.then(settle, () => {
+      settle();
+      if (this.loading === loading) this.loading = null;
     });
-    return this.loading;
+    return loading;
+  }
+
+  async preload(onProgress?: ProgressCallback): Promise<void> {
+    await this.load(onProgress);
   }
 
   async predict(file: File, onProgress?: ProgressCallback): Promise<Prediction> {

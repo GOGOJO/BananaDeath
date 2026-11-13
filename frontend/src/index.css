@@ -1,1 +1,175 @@
 @import "tailwindcss";
+@import "@fontsource/press-start-2p/index.css";
+@import "@fontsource/pixelify-sans/400.css";
+@import "@fontsource/pixelify-sans/700.css";
+@import "@fontsource-variable/nunito/index.css";
+
+@theme {
+  --font-sans: "Nunito Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: "Press Start 2P", ui-monospace, monospace;
+  --font-display: "Pixelify Sans", "Press Start 2P", ui-monospace, monospace;
+
+  --color-cream: #f4ebd0;
+  --color-paper: #fff8e7;
+  --color-sky: #e4edc4;
+  --color-forest: #386641;
+  --color-forest-dark: #24452b;
+  --color-sage: #a7c957;
+  --color-banana: #f9c74f;
+  --color-banana-dark: #dfa43b;
+  --color-orange: #f9844a;
+  --color-orange-dark: #d9622b;
+  --color-ink: #3b3024;
+  --color-ink-soft: #6b5a45;
+  --color-slot: #e9ddb8;
+  --color-soil: #8b6b3d;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+  }
+
+  :focus-visible {
+    outline: 4px dashed var(--color-forest);
+    outline-offset: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* A 4px "pixel" border with notched corners, drawn with shadows so it doesn't affect layout. */
+  .px-border {
+    box-shadow:
+      0 -4px 0 0 var(--color-ink),
+      0 4px 0 0 var(--color-ink),
+      -4px 0 0 0 var(--color-ink),
+      4px 0 0 0 var(--color-ink);
+  }
+
+  .px-panel {
+    @apply bg-paper;
+    box-shadow:
+      0 -4px 0 0 var(--color-ink),
+      0 4px 0 0 var(--color-ink),
+      -4px 0 0 0 var(--color-ink),
+      4px 0 0 0 var(--color-ink);
+  }
+
+  .px-panel-raised {
+    @apply bg-paper;
+    box-shadow:
+      0 -4px 0 0 var(--color-ink),
+      0 4px 0 0 var(--color-ink),
+      -4px 0 0 0 var(--color-ink),
+      4px 0 0 0 var(--color-ink),
+      8px 8px 0 0 rgb(59 48 36 / 0.18);
+  }
+
+  .px-btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-3 px-5 py-4 font-pixel text-xs leading-none uppercase select-none;
+    box-shadow:
+      0 -4px 0 0 var(--color-ink),
+      0 4px 0 0 var(--color-ink),
+      -4px 0 0 0 var(--color-ink),
+      4px 0 0 0 var(--color-ink),
+      inset -4px -4px 0 0 var(--btn-shade),
+      inset 4px 4px 0 0 var(--btn-light);
+    background: var(--btn-bg);
+    color: var(--btn-text);
+  }
+
+  .px-btn:hover:not(:disabled) {
+    filter: brightness(1.06);
+  }
+
+  .px-btn:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow:
+      0 -4px 0 0 var(--color-ink),
+      0 4px 0 0 var(--color-ink),
+      -4px 0 0 0 var(--color-ink),
+      4px 0 0 0 var(--color-ink),
+      inset 4px 4px 0 0 var(--btn-shade);
+  }
+
+  .px-btn:disabled {
+    @apply cursor-not-allowed;
+    --btn-bg: var(--color-slot);
+    --btn-shade: #d6c79c;
+    --btn-light: #f3ead0;
+    --btn-text: var(--color-ink-soft);
+  }
+
+  .px-btn-primary {
+    --btn-bg: var(--color-banana);
+    --btn-shade: var(--color-banana-dark);
+    --btn-light: #fde391;
+    --btn-text: var(--color-ink);
+  }
+
+  .px-btn-green {
+    --btn-bg: var(--color-forest);
+    --btn-shade: var(--color-forest-dark);
+    --btn-light: #4f8a5a;
+    --btn-text: var(--color-paper);
+  }
+
+  .px-btn-plain {
+    --btn-bg: var(--color-paper);
+    --btn-shade: var(--color-slot);
+    --btn-light: #ffffff;
+    --btn-text: var(--color-ink);
+  }
+
+  /* A sunken inventory slot. */
+  .px-slot {
+    @apply bg-slot;
+    box-shadow:
+      0 -4px 0 0 var(--color-ink),
+      0 4px 0 0 var(--color-ink),
+      -4px 0 0 0 var(--color-ink),
+      4px 0 0 0 var(--color-ink),
+      inset 6px 6px 0 0 #d6c79c;
+  }
+
+  .px-badge {
+    @apply inline-block px-2 py-1.5 font-pixel text-[0.6rem] leading-none uppercase;
+    box-shadow:
+      0 -2px 0 0 var(--color-ink),
+      0 2px 0 0 var(--color-ink),
+      -2px 0 0 0 var(--color-ink),
+      2px 0 0 0 var(--color-ink);
+  }
+
+  .pixelated {
+    image-rendering: pixelated;
+  }
+}
+
+@utility animate-bob {
+  animation: bob 1.4s steps(1) infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}

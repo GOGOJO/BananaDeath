@@ -25,4 +25,6 @@ export type ProgressCallback = (loaded: number, total: number | null) => void;
 export interface Predictor {
   readonly source: InferenceSource;
   predict(file: File, onProgress?: ProgressCallback): Promise<Prediction>;
+  /** Start fetching the model ahead of the first prediction, if this predictor needs one. */
+  preload?(onProgress?: ProgressCallback): Promise<void>;
 }
